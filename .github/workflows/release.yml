@@ -22,15 +22,15 @@ jobs:
           touch ${{ env.RELEASE_NOTES_PATH }}
           cat CHANGELOG.md | sed -e '/./{H;$!d;}' -e "x;/##\ Version\ ${{ github.ref_name }}/"'!d;' >> ${{ env.RELEASE_NOTES_PATH }}
 
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: v${{ github.ref }}
-          body_path: ${{ env.RELEASE_NOTES_PATH }}
+#      - name: Create release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: v${{ github.ref }}
+#          body_path: ${{ env.RELEASE_NOTES_PATH }}
 
   build-for-windows:
     name: ${{ matrix.job.target }} (${{ matrix.job.os }})
