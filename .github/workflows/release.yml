@@ -1,9 +1,6 @@
 name: release
 
-on:
-  push:
-    tags:
-      - "*"
+on: [ push, workflow_dispatch ]
 
 env:
   FLUTTER_VERSION: "3.10.1"
